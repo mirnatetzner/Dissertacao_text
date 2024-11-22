@@ -1,0 +1,441 @@
+\documentclass[12pt,openright,oneside,a4paper,chapter=TITLE,english,french,spanish,brazil]{abntex2}
+\usepackage[T1]{fontenc}		
+\usepackage[utf8]{inputenc}	
+%\usepackage[capposition=top]{floatrow}
+%\usepackage{lastpage}			
+\usepackage{indentfirst}	
+\usepackage{color}				
+\usepackage{graphicx}	
+\usepackage{microtype}
+
+\usepackage{geometry}
+
+
+
+%Ajuste espaçamento da linha
+\linespread{1.5}
+
+%tamanhos fontes
+\renewcommand{\ABNTEXchapterfontsize}{\Large}
+
+
+\usepackage[brazilian,hyperpageref]{backref}
+\usepackage[alf]{abntex2cite}
+
+%pacote para svg
+\usepackage{svg}
+
+%pacotes para pseudo-código
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+% pacote para adicionar novas listas
+\usepackage{listings}
+
+% Para criar o novo tipo de ambiente de gráfico.
+\usepackage{float}
+%Para customizar a lista de gráficos.
+\usepackage{tocloft}
+%Para controlar a numeração dos gráficos.
+\usepackage{chngcntr}
+%suportar bookmarks no PDF.
+\usepackage{hyperref}
+
+%lista de quadros 
+\usepackage{array} % aux. tabelas
+\usepackage{caption} % legendas
+% Espaçamento entre linhas (tabelas):
+\renewcommand{\arraystretch}{1.25} 
+%
+
+%pacote para matriz de matematica
+\usepackage{amsmath}
+
+\usepackage{pacotence-capa-folhaprovacao}
+
+\graphicspath{ {image/} }
+\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+\renewcommand{\backref}{}
+\renewcommand*{\backrefalt}[4]{
+	\ifcase #1 %
+		Nenhuma citação no texto.%
+	\or
+		Citado na página #2.%
+	\else
+		Citado #1 vezes nas páginas #2.%
+	\fi}%
+	
+%%%%%%%%%%%%%%%%% INFO %%%%%%%%%%%%%%%%%
+
+\titulo{\large Fecundidade Masculina no Brasil e fontes de dados: Potencialidades para além das limitações
+metodológicas}
+\autor{\large Mirna Tetzner Ramos}
+\local{Rio de Janeiro, RJ}
+\data{Fevereiro, 2025}
+\orientador[Orientador:]{ Angelita Alves de Carvalho}
+\coorientador[Coorientador:]{ Alinne de Carvalho Veiga }
+
+%%%%%%%%%%%%%%%%% NÃO EDITAR %%%%%%%%%%%%%%%%%
+
+\instituicao{%
+  Instituto Brasileiro de Geografia e Estatística
+  \par
+  Escola Nacional de Ciências Estatísticas
+  }
+\tipotrabalho{Dissertação}
+\preambulo{Apresentada ao Programa de Pós-Graduação em População,
+Território e Estatísticas Públicas da Escola Nacional de Ciências
+Estatísticas do Instituto Brasileiro de Geografia e Estatística como
+requisito parcial para obtenção do título de}
+\definecolor{blue}{RGB}{41,5,195}
+ 
+ \makeatletter
+
+\renewcommand{\folhaderostocontent}{
+\begin{center}
+{\ABNTEXchapterfont\large\bfseries INSTITUTO BRASILEIRO DE GEOGRAFIA E ESTATÍSTICA \par
+ESCOLA NACIONAL DE CIÊNCIAS ESTATÍSTICAS}
+
+\begin{center}
+\ABNTEXchapterfont\bfseries\large\imprimirtitulo
+\end{center}
+    
+    \vspace*{1cm}
+    
+{\ABNTEXchapterfont\bfseries\large\imprimirautor\par}
+    \vspace*{1cm}
+
+{\ABNTEXchapterfont\bfseries\large Dissertação}
+
+
+\abntex@ifnotempty{\imprimirpreambulo}{%
+  \hspace{.7\textwidth}  \centering
+  \begin{minipage}{.7\textwidth}
+  \imprimirpreambulo
+  \end{minipage}%
+}%
+    \vspace*{1cm}
+
+{\ABNTEXchapterfont\bfseries Mestre em População, Território e Estatísticas Públicas}
+ 
+
+  \vspace*{\fill}
+  
+{\imprimirlocal \par \imprimirdata}
+\vspace*{1cm}
+\end{center}
+}
+
+\makeatother
+
+
+\setlength{\parindent}{1.3cm}
+
+\setlength{\parskip}{0.2cm} 
+
+\makeindex
+
+
+%%%%%%%%%% cria comando para lista de gráfico
+
+\floatstyle{plaintop}
+\newfloat{grafico}{!ht}{lop}
+\floatname{grafico}{Gráfico}
+% Configurar a lista de Gráficos
+\newcommand{\listofgraficos}{
+  \listof{grafico}{Lista de Gráficos}
+}
+
+
+%%%%%%%%%% cria comando para lista de quadro
+   
+% Definir um novo tipo de float chamado 'quadro'
+\floatstyle{plaintop}
+\newfloat{quadro}{!ht}{loq}
+\floatname{quadro}{Quadro}
+% Configurar a lista de quadros
+\newcommand{\listofquadros}{
+\listof{quadro}{Lista de Quadros}
+}
+
+
+
+%%%%%%%---------------
+
+\begin{document}
+%
+\frenchspacing 
+%
+\imprimircapa
+
+%\imprimirfolhaderosto*
+
+    
+
+% ---
+
+%%%%%%%%%%%%%%%%% FICHA BIBLIOGRÁFICA %%%%%%%%%%%%%%%%%
+ 
+% Inserir a ficha bibliografica
+% ---
+% Isto é um exemplo de Ficha Catalográfica, ou ``Dados internacionais de
+% catalogação-na-publicação''. Você pode utilizar este modelo como referência. 
+% Porém, provavelmente a biblioteca da sua universidade lhe fornecerá um PDF
+% com a ficha catalográfica definitiva após a defesa do trabalho. Quando estiver
+% com o documento, salve-o como PDF no diretório do seu projeto e substitua todo
+% o conteúdo de implementação deste arquivo pelo comando abaixo:
+%
+%%\begin{fichacatalografica}
+%%\includepdf{image/Ficha_catalografica.pdf}
+%%\end{fichacatalografica}
+
+\begin{fichacatalografica}
+
+\begin{flushleft}
+Autorizo a reprodução e divulgação total ou parcial desse  
+trabalho, por parte da Escola Nacional de Ciências Estatísticas,  
+através dos seus recursos eletrônicos, para fins de estudo e  
+pesquisa, desde que citada a fonte.  
+\end{flushleft}
+
+    \vspace*{\fill}\vspace*{\fill}
+    
+\begin{center}
+Copyright \par por \par \imprimirautor \par 2025
+\end{center}
+
+
+
+
+	\sffamily
+	\vspace*{\fill}					% Posição vertical
+	\begin{center}					% Minipage Centralizado
+	\fbox{\begin{minipage}[c][9cm]{15cm}		% Largura
+	\small
+	\imprimirautor
+	%Sobrenome, Nome do autor
+	
+	\hspace{0.5cm} \imprimirtitulo  / \imprimirautor. --
+	\imprimirlocal, \imprimirdata-
+	
+	\hspace{0.5cm} \thelastpage p. : il. (algumas color.) ; 30 cm.\\
+	
+	\hspace{0.5cm} \imprimirorientadorRotulo~\imprimirorientador\\                                \hspace{0.5cm} \imprimircoorientadorRotulo~\imprimircoorientador\\
+	
+	\hspace{0.5cm}
+	\parbox[t]{\textwidth}{\imprimirtipotrabalho~--~\imprimirinstituicao,
+	\imprimirdata.}\\
+	
+	\hspace{0.5cm}
+		1. Fecundidade masculina.
+		2. Imputação de dados.
+		2. Sinasc.
+		I. Orientador.
+		II. Universidade xxx.
+		III. Faculdade de xxx.
+		IV. Título 			
+	\end{minipage}}
+	\end{center}
+\end{fichacatalografica}
+
+\begin{comment}
+
+%%%%%%%%%%%%%%%%% FOLHA DE APROVAÇÃO %%%%%%%%%%%%%%%%%
+
+%\begin{folhadeaprovacao}
+%Folha de aprovação
+%\includepdf{image/FolhaAPROVACAO.pdf}
+%\end{folhadeaprovacao}
+
+\begin{folhadeaprovacao}
+
+  \begin{center}
+    {\ABNTEXchapterfont\bfseries\imprimirinstituicao} \par
+    \vspace*{\fill}\vspace*{\fill}
+    {\ABNTEXchapterfont\bfseries\imprimirautor} \par
+    \vspace*{\fill}
+	{\ABNTEXchapterfont\bfseries \imprimirtitulo} \par
+        \hspace{.30\textwidth}
+    \begin{flushleft}
+   Dissertação apresentada ao Programa de Pós-Graduação em População, Território e Estatísticas Públicas da Escola Nacional de Ciências Estatísticas do Instituto Brasileiro de Geografia e Estatística, como requisito parcial para a obtenção do título de Mestre. 
+   \end{flushleft}
+	 
+\end{center}
+
+    
+		 {\ABNTEXchapterfont\bfseries  Banca Examinadora:}
+  
+    
+   \assinatura{\textbf{\imprimirorientador} \\ Orientador - ENCE/ IBGE}  % O ALUNO DEVE EDITAR AQUI
+   \assinatura{\textbf{\imprimircoorientador} \\ Coorientador - ENCE/ IBGE}  % O ALUNO DEVE EDITAR AQUI
+   \assinatura{\textbf{Professor} \\ Convidado 1}
+   \assinatura{\textbf{Professor} \\ Convidado 2}    % O ALUNO DEVE EDITAR AQUI
+   \assinatura{\textbf{Professor} \\ Convidado 3}
+   \begin{center}
+    \vspace*{0.5cm}
+    {Rio de Janeiro, COLOCAR.DIA \imprimirdata}
+    \vspace*{1cm}
+  \end{center}
+  
+\end{folhadeaprovacao}
+
+
+%%%%%%%%%%%%%%%%% DEDICATÓRIA %%%%%%%%%%%%%%%%%
+%
+\begin{dedicatoria}
+   \vspace*{\fill}
+   \centering
+   \noindent
+   \textit{ Este trabalho..} \vspace*{\fill}   % O ALUNO DEVE EDITAR AQUI
+\end{dedicatoria}
+
+
+%%%%%%%%%%%%%%%%% AGRADECIMENTOS %%%%%%%%%%%%%%%%%%
+\begin{agradecimentos}
+
+     Agradecimentos
+
+\end{agradecimentos}
+
+
+%%%%%%%%%%%%%%%%% RESUMO %%%%%%%%%%%%%%%%%
+% resumo em português
+\setlength{\absparsep}{18pt}
+\begin{resumo}
+	 Entrar com resumo
+	
+ \textbf{Palavras-chaves}: Palavra; Palavra
+\end{resumo}
+
+\setlength{\absparsep}{18pt}
+\begin{resumo}[Abstract]
+Abstract
+	
+ \textbf{Key-words}: word; word; 
+\end{resumo}
+
+%%%%%%%%%%%%%%%%% NÃO EDITAR %%%%%%%%%%%%%%%%%
+
+
+
+
+\pdfbookmark[0]{\listtablename}{lot}
+\listoftables*
+\cleardoublepage
+%
+\end{comment}
+\cleardoublepage
+
+\pdfbookmark[0]{\listfigurename}{lof}
+\listoffigures*
+\cleardoublepage
+
+
+%%%%%%%%%%%%%%%%% SIGLAS %%%%%%%%%%%%%%%%%
+\begin{siglas}
+\item [FM] Fecundidade Masculina
+\item [TFT] Taxa de Fecundidade Total
+\item [IDB] Indicadores e Dados Básicos
+\item [ENCE] Escola Nacional de Ciências Estatísticas
+\item [TFTM] Taxa de Fecundidade Total Masculina
+\item [TFTF] Taxa de Fecundidade Total Feminina
+\item [TEFF] Taxas Específicas de Fecundidade por idade femininas 
+\item [TEFM] Taxas Específicas de Fecundidade por idade masculinas 
+\item [MIDF] Matriz Indicadora de Dados Faltantes
+\item [MFP] Método dos Filhos Próprios 
+\item [DHS] Demographic and Health Surveys
+\item [SINASC] Sistema de Informação sobre Nascidos Vivos
+\item [SUS] Sistema Único de Saúde
+\item [DNV] Declaração de Nascido Vivo 
+\item [UF] Unidade Federativa
+
+\end{siglas}
+
+%%%%%%%%%%%%%%%%% SÍMBOLOS %%%%%%%%%%%%%%%%%
+
+     % \begin{simbolos}   % O ALUNO DEVE EDITAR AQUI
+     % \item[$ \mu $] Letra grega Mu
+     % \item[$ \sigma $] Letra grega Sigma
+     % \end{simbolos}
+
+%%%%%%%%%%%%%%%%% GRÁFICOS %%%%%%%%%%%%%%%%%
+
+\listofgraficos
+\clearpage
+
+%%%%%%%%%%%%%%%%% QUADROS %%%%%%%%%%%%%%%%%
+%\listofquadros % lista de quadros
+%\clearpage     % qubra de página
+
+
+%%%%%%%%%%%%%%%%% NÃO EDITAR %%%%%%%%%%%%%%%%%
+\pdfbookmark[0]{\contentsname}{toc}
+\tableofcontents*
+\textual
+
+\cleardoublepage
+% ---
+\textual
+%
+\include{introducao/root}  
+%
+\include{cap1-revisao-bib/cap1-root}
+%
+\include{cap2-base/cap2-root}
+%
+\include{cap3-metodologia/cap3-root}
+%
+%\include{cap4}
+%
+%\include{cap5}
+%
+%\include{cap6}
+% 
+%\include{cap7}
+%
+\bookmarksetup{startatroot}% 
+%
+\postextual
+%
+\bibliography{ref}
+%
+ 
+%
+% ----------------------------------------------------------
+% Glossário
+% ----------------------------------------------------------
+%Capítulo excluído
+% Consulte o manual da classe abntex2 para orientações sobre o glossário.
+%
+%\glossary
+% ---
+%\begin{apendicesenv}
+%%
+%\partapendices
+
+%%%%%%%%%%%%%%%%% EDITAR APENDICES %%%%%%%%%%%%%%%%%
+%% ----------------------------------------------------------
+%\chapter{Capitulo}
+%% ----------------------------------------------------------
+%\chapter{Caplitulo 2}
+%% ----------------------------------------------------------
+%\end{apendicesenv}
+%% 
+%\begin{anexosenv}
+%%
+%\partanexos
+
+%%%%%%%%%%%%%%%%% EDITAR ANEXOS %%%%%%%%%%%%%%%%%
+%\chapter{Capitulo}
+%% ---
+%\chapter{Capitulo}
+%%
+%\chapter{Capitulo}
+%% 
+%\end{anexosenv}
+
+%---------------------------------------------------------------------
+%---------------------------------------------------------------------
+\printindex
+%
+\end{document}

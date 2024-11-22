@@ -1,0 +1,143 @@
+%%%%%%%%%%%%%%%%% DESENVOLVIMENTO %%%%%%%%%%%%%%%%%
+\chapter{DESENVOLVIMENTO} % CAIXA ALTA
+
+\section{Análise exploratória dos dados}
+
+\textcolor{blue}{mOSTRAR OS DADOS DE IDADE DO PAI AO LONGO DO TEMPO POR REGIÃO}
+
+
+
+\begin{comment}
+    ■ R packages: mi, mice, and Amelia packages include features for
+model checking with core functions for imputing missing values
+(van Buuren & Groothuis-Oudshoorn, 2011; Honaker et al., 2011;
+
+Su et al., 2011). VIM and miP packages visualise imputed data
+(Brix, 2012; Templ et al., 2015). These packages function to
+graphically compare distribution of observed and imputed data, by
+offering scatterplots for plotting observed and imputed data against
+another variable. The mi package has tools to produce residual
+plots to check imputation models when imputing data using MICE.
+Amelia software has a diagnostic feature called overimputation to
+produce cross-validation plots of mean imputed values against
+observed value with 90% confidence intervals (Honaker et al.,
+2011).
+\end{comment}
+
+
+\begin{comment}
+Guia --- Missing Data and Multiple Imputation Decision Tree (1):
+
+1. Examine patterns of missingness - for entire scales, items within scales,
+patterns of missing data points, groups of people
+○ Univariate descriptive statistics
+■ Check for any illogical values that could be missing data codes
+■ Consider implications of different data codes (e.g., missing data for
+“I prefer not to answer”, “not applicable”, or because someone
+didn’t provide an answer each have different implications)
+
+○ Multivariate descriptive statistics
+■ Look for outliers and try to determine whether the data are “real”
+responses or can be considered skip patterns (e.g., careless
+responders or straight-line responders; King et al. 2018)
+■ Look for missingness at many variables simultaneously to identify
+missing data patterns. For example, people might be missing all of
+the cognitive tasks but none of the survey data (some example
+visualizations)
+
+2. Evaluate how much missingness you have on each variable of interest
+Remember to pay attention to the percent of both item-missing data (i.e.,
+skipped questions on a survey) and attrition-missing data (i.e., people that
+were missing data for the entire wave - sometimes indicated by skip codes
+within datasets).
+
+3. Choose a decision rule for determining whether missingness is related to other variables in your dataset
+
+■ This decision rule would ideally be preregistered!
+■ In large datasets, p values may not be a reliable method to determine
+which variables meaningfully predict missingness patterns (i.e., there may
+be statistically significant differences at p < .05 because analyses are
+highly powered, but these differences may not be practically or
+meaningfully important).
+■ Effect sizes are a perfectly valid way to determine whether something is
+related to the missingness.
+● How big of an effect size is big enough to matter? It depends, of
+course, on what the outcome is you’re interested in. (Again, this is
+where preregistration comes in handy.) Pick an effect size that is
+the smallest relevant effect (Sullivan & Feinn, 2012).
+● If you are struggling with what a “smallest relevant effect” might be,
+some suggest a general rule of r > 0.4 correlation as a threshold for
+inclusion (e.g., Collins et al., 2001; Enders, 2010) as this value
+seems to find a good balance between model parsimony and
+increased statistical power. (Note: you may have a “smallest
+relevant effect” that is r < 0.4 - that’s okay, but make sure you
+document and justify why you expect this to be the case) (UCLA
+Statistical Consulting Group).
+
+4. Check whether any auxiliary variables are related to your missingness
+
+Auxiliary variables are variables in your data set that are not of particular
+interest to your analysis, but that are either correlated with a missing
+variable(s) or are believed to be associated with missingness. Auxiliary
+
+variables will be added to the imputation model to increase power and/or
+to help make the assumption of MAR more plausible, because including
+these variables has been found to improve the quality of imputed values
+generated from multiple imputation. This is especially important when
+imputing a dependent variable and/or when you have variables with a high
+proportion of missing information (Johnson & Young, 2011; Young &
+Johnson, 2010; Enders, 2010).
+○ You should still check for potential auxiliary variables even if your data are
+MCAR or MNAR!
+■ With MCAR data, just double check to make sure that there is
+nothing else predicting patterns of missingness.
+■ With MNAR data, your sample will be biased no matter what.
+However, you can lessen any additional bias and increase your
+power by using MI and including auxiliary variables that may
+explain other missingness patterns.
+
+■ Test auxiliary variables for inclusion
+1) Create a new dummy variable that represents whether your key
+variable is missing (missdummy=1) or not missing (missdummy=0).
+2) Then predict it with auxiliary variables you think are likely to be
+related to missingness (e.g., t-tests for continuous auxiliary
+variables, chi-square for binary auxiliary variables, anova for
+categorical auxiliary variables). For example, in many longitudinal
+academic datasets, variables like parent education, mobility,
+income to needs ratio, and disability status are often related to
+higher dropout (attrition) in longitudinal studies.
+3) Repeat this for any key variables you plan to include in the analysis
+(predictors; outcomes).
+
+■ Note: Assume that any statistical MCAR tests are actually tests for
+whether your data can be listwise deleted (van Ginkel et al., 2020); also,
+see FAQ
+\end{comment}
+
+
+
+
+\begin{comment}
+        \href{exemplo1}{https://hdsr.mitpress.mit.edu/pub/4tx7h11w/release/2}
+    \href{exmplo2}{https://www.researchgate.net/publication/358529185_A_reinforcement_learning-based_approach_for_imputing_missing_data}
+    \begin{algorithm}
+    \caption{nome do método utilizado para a simulação }\label{alg:cap}
+    \begin{algorithmic}
+    \Require $n \geq 0$
+    \Ensure $y = x^n$
+    \State $y \gets 1$
+    \State $X \gets x$
+    \State $N \gets n$
+    \While{$N \neq 0$}
+    \If{$N$ is even}
+        \State $X \gets X \times X$
+        \State $N \gets \frac{N}{2}$  \Comment{This is a comment}
+    \ElsIf{$N$ is odd}
+        \State $y \gets y \times X$
+        \State $N \gets N - 1$
+    \EndIf
+    \EndWhile
+    \end{algorithmic}
+    \end{algorithm}
+\end{comment}
+

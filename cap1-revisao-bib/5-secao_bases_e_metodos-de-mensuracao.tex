@@ -1,0 +1,107 @@
+\section{Principais bases e métodos}\label{bases_e_metodos-ref}
+
+
+A TFT e as TEFs são geralmente calculadas para mulheres, porém, como defendemos aqui, ambas podem e devem ser calculadas também para homens. As TEFs por idade (${}_n{f}_x$, onde $x$ é o limite inferior da faixa de idade e $n$ o tamanho do intervalo, geralmente intervalos quinquenais de idade) relacionam-se ao número de nascimentos ocorridos entre homens de uma determinada idade ou grupo etário com o tempo total de exposição dos mesmos ao risco de terem filhos naquele mesmo período \cite{FOZ2021metodos}. Definida por:
+
+\begin{equation}\label{tefmEqu}
+{}_n{f}_x = 1000 \cdot \frac{\text{\footnotesize \textit{Número de nascimentos ocorridos aos homens com idades entre} } x \text{ \footnotesize e } x + n \text{ \footnotesize \textit{no período}}}{\text{\footnotesize \textit{População média de homens com idades entre} } x \text{ \footnotesize e } x + n \text{ \footnotesize \textit{no período}}} \\
+\end{equation}
+
+Já a TFTM quantifica o número médio de filhos nascidos vivos que um homem teria ao longo dos seus anos reprodutivos, se fosse exposto às TEFs masculinas de um determinado ano. Como vimos anteriormente\footnote{Seção \ref{tft_tef_mundo}}, a TFT pode ser afetada quando ocorre um adiamento ou adiantamento da paternidade-maternidade. Porém, é um dos indicadores mais relevantes para caracterizar o nível da fecundidade da população de determinado território ou grupo social. É obtido somando as TEFs (${}_n{f}_x$) e multiplicando pela amplitude do grupo etário $n$, onde $\alpha$ e $\beta$ indicam o início e o fim do intervalo reprodutivo masculino:
+
+\begin{equation} \label{tftEqu}
+TFT = n \sum_{x=\alpha}^{\beta} {}_n{f}_x
+\end{equation}
+
+
+Não há consenso sobre o intervalo utilizado para o período reprodutivo masculino, sendo utilizados diferentes intervalos entre os autores (15-59, 15-79, 17–59, 15-50, 15-59, 20-59\footnote{\citeonline{zhang2010male,schoumaker2019male,dudel2016estimating, kyzlinkova2018fatherhood, unstatsu2022Nota} e \citeonline{office2009patterns}, respectivamente. Alguns autores adotam intervalos diferentes conforme limitações da base de dados.}). A maioria dos autores agrupa os nascimentos observados fora do limite superior e inferior nas coortes limites. Por exemplo, considerando nascimentos com idade masculina observada menor de 14 anos, parte do grupo etário 15-19 anos. Nascimentos abaixo de 15 anos e acima de 60 costumam ser apontados como eventos rarefeitos.  
+  
+
+Conforme vimos a partir de \citeonline{zhang2010male}, os estudos de fecundidade masculina têm como uma de suas principais barreiras, a qualidade dos registros para idade do pai ao nascimento, informação necessária para se obter o numerador do cálculo das TEFMs (equação \ref{tefmEqu}). Os dados de fecundidade masculina estão disponíveis em muitos países ocidentais através do registo civil e sistemas de estatísticas vitais (CRVS). O \textit{“United Nations Demographic Yearbook”} compila o número de nascidos vivos por idade do pai e calcula as TEFMs através de registros civis e é uma das principais bases que tem sido utilizadas para os estudos de fecundidade masculina pelo mundo. A publicação é baseada em dados coletados das autoridades nacionais de estatística de diversos países, desde 1948. Ela é considerada uma das bases mais completadas que contém informação sobre fecundidade masculina, apresentado dados nas edições de 1949–1950, 1954, 1959, 1965, 1969, 1975, 1981, 1986, 1999 e 2007-2022 \cite{unstatsu25:online}. Porém, a base possui limitação quanto a sua abrangência. Sendo composta majoritariamente por nações onde os CRVS são mais avançados \cite{zhang2010male} e atingem maior completude, ou seja, com baixa proporção de dados faltantes. Essa foi a principal fonte de informação utilizada nas análises de \citeonline{zhang2010male} e \citeonline{paget1994relational}. 
+
+Visando ampliar a análise da fecundidade masculina para países não abarcados pelo \textit{“United Nations Demographic Yearbook”}, \citeonline{schoumaker2017measuring} elabora e compara três métodos para estimar as TEFMs utilizando as bases do \textit{“Demographic and Health Surveys (DHS)”}\footnote{Pesquisa de saúde realizada a mais de 30 anos em cerca de 90 países. Dentre as informações coletadas (sobre mortalidade infantil, fecundidade, planejamento familiar, saúde materna, imunização infantil, níveis de desnutrição, prevalência do HIV e malária) estão aspectos relacionados a fecundidade e reprodução masculina. Fonte: https://www.usaid.gov/global-health/demographic-and-health-surveys-program.}. As pesquisas do programa DHS se estruturam por três questionários, aplicados aos moradores, à mulher selecionada (entre 15-49 anos) e ao homem selecionado (geralmente entre 15-59 anos). O autor utiliza os dados disponíveis para encontrar o número de nascimentos ocorridos aos homens nas faixas idades. Os três métodos utilizados foram: método dos filhos próprios \textit{(own-children method)}, o método da data do último nascimento \textit{(the date-of-last-birth method)} e o método cruzado \textit{(the crisscross method)}.
+
+
+
+O método dos filhos próprios (MPF), utilizado habitualmente para calcular a fecundidade feminina, foi adaptado pelo autor para o caso dos homens mediante basicamente cinco passos: parear a criança sobrevivente com o respectivo pai, classificar os filhos por idade e por idade do pai em dado ano, redistribuir as crianças não correspondidas por idade do pai, reverter a sobrevivência das crianças para estimar o número de nascimentos por ano e idade do pai nos anos anteriores ao levantamento, e  reverter a sobrevivência da população masculina nos anos anteriores à pesquisa para estimar o denominador das TEFMs \cite{schoumaker2017measuring}. 
+Formalmente, a TEFM no período entre $x$ e $x+1$ anos antes do momento da pesquisa, para homens que naquele momento tinham entre $y-x-1$ e $y-x$ anos deve ter sido: 
+
+\begin{equation}
+    TEFM_{y-x}(t-x-\text{\footnotesize1/2})=P_{x,y}\frac{\ell_{0}}{\ell_{x+\frac{1}{2}}} / P_{y}\frac{\ell_{y-x}}{\ell_{y+\frac{1}{2}}}
+\end{equation}
+
+No numerador temos ($P_{x,y}$) filhos atualmente vivos (sobreviventes dos que nasceram num momento passado), crianças de $x$ anos completos de idade cujos pais têm $y$ anos, multiplicado pela razão de sobrevivência da criança no intervalo ($P_{x,y} \ell_{0} / \ell_{x+\frac{1}{2}}$). O denominador é composto pelos pais atuais, sobreviventes dos que haviam na época, através de $P_{y}$ $\ell_{y-x} / \ell_{y+\frac{1}{2}}$ \cite{FOZ2021metodos}.  
+
+Para o primeiro passo, parear as crianças sobreviventes aos seus respectivos pais (para obter idade dos pais ao nascimento), \citeonline{schoumaker2017measuring} utiliza informações inclusas nos próprios dados da DHS, disponíveis para quando ambos residem na mesma casa. Para o caso no qual o pai vive em casa diferente, o autor estimou as idades dos pais sobreviventes utilizando por registro doador (Hot-Deck) \apud{allison2001missing}{schoumaker2017measuring}, retirando crianças sobreviventes que relataram que seus pais não eram mais vivos. 
+A idade do pai para os filhos cujo pai está vivo foi então imputada para cada filho não pareado, um filho com as mesmas características (idade e idade da mãe) foi selecionado aleatoriamente entre os filhos pareados\footnote{O autor realizou a imputação aleatória 10 vezes e calculou 10 séries das TEFMs, considerando, ao final, a média das 10 séries de TEFMs}.
+A idade do pai do filho selecionado foi então atribuída ao pai do filho sem correspondência.
+O autor afirma que se seguisse a abordagem padrão para o MFP (normalmente aplicado para o cálculo das TEFF), iria supor a mesma distribuição de idade dos pais de filhos compatíveis e de filhos não correspondidos de idade $x$, usar a idade da mãe no processo de imputação levou a uma idade ao nascimento mais baixa (um ano em média) para pais de filhos não correspondidos em comparação com pais de filhos pareados. Em seu processo de estimação, o autor encontrou que outras informações poderiam ser consideradas no processo de imputação, como o tipo de local de residência, porém demonstraram ter um impacto limitado nos resultados. 
+
+Em seguida, para encontrar um pai (de idade imputada) para filhos não pareados, um homem com a mesma idade que a idade imputada do pai  foi selecionado aleatoriamente entre os homens no conjunto de dados do agregado familiar, independentemente do homem já ser pai ou não. Os últimos passos foram, estimar o número de nascimentos em $x$ anos antes da pesquisa (através do inverso da probabilidade de sobrevivência dos filhos com idade completa $x$) para, por fim, calcular as TEFMs, os nascimentos durante os cinco anos anteriores à pesquisa são somados por faixa etária dos pais ao nascimento, e a exposição é obtida somando o tempo que cada homem passou em cada faixa etária nos últimos cinco anos.
+
+O segundo método proposto por \citeonline{schoumaker2017measuring} foi o da data do último nascimento. Nele, é pressuposto que as TEFMs são constantes para o grupo etário $j$ em dado período. As taxas de fecundidade no grupo etário $j$ ($\lambda_{j}$) são calculadas como a razão entre o número de nascimentos visíveis (últimos nascimentos) no grupo de idade $j$ e a exposição dos homens nessa faixa etária naquele período, medido como a soma da duração (para cada homem) passada na faixa etária entre a data do inquérito e a data do último nascimento, ou a data do início do período, se nenhum nascimento ocorreu durante o período (faixa do grupo etário, por exemplo, cinco anos). No método não é possível captar caso tenha ocorrido mais de um nascimento para o pai durante o período, o que gera subestimação da fecundidade. Porém, uma vantagem dessa escolha, segundo o autor, é de que seria possível  analisar as TEFMs entre diferentes grupos, com seus marcadores sociais ou características como tipo de relação monogâmica-poligínica, isso porque o número de nascimentos visíveis por grupo etário 
+ é uma informação obtida diretamente do questionário dos homens selecionados.  
+
+
+\begin{equation}
+   TEFM (\lambda_{j}) = \frac{\text{\footnotesize \textit{número de nascimentos visíveis por grupo etário} }j}{\text{\footnotesize \textit{exposição visível no grupo etário}}j}
+\end{equation}
+
+
+Na terceira e última abordagem exposta por \citeonline{schoumaker2017measuring}, o método cruzado, é feito uma comparação entre os dados das crianças nascidas vivas em duas edições da DHS. TEFMs ($\lambda$) entre duas idades $x$ e $x+n$ sobre um período ($t$) são estimadas pela equação “crisscross”\footnote{Para maiores detalhes ver o trabalho \textit{“The crisscross method to evaluate data quality in fertility surveys”}\cite{schoumaker2014crisscross}, onde o autor detalha melhor seu método.}. Utiliza-se o número médio de crianças já nascidas por idade exata, estimado suavizando o número de crianças já nascidas por idade completa. As vantagens desse método seria que, por se basear no número de crianças já nascidas, não seria afetado por imprecisões nas datas de nascimento ou idades das crianças. No entanto, seria impactado por omissões diferenciais de nascimentos nos inquéritos e diferenças na composição da amostra entre edições da DHS (e.g. se homens com fecundidade elevada forem sub-representados).
+
+A principal contribuição do trabalho de \citeonline{schoumaker2017measuring} é possibilitar a estimação da fecundidade masculina em países onde os registros administrativos não são totalmente consolidados. O Brasil tem bases da DHS para os anos de 1986, 1991 e 1996, disponíveis no site do programa DHS \footnote{Fonte: \href{https://dhsprogram.com/Countries/Country-Main.cfm?ctry_id=49\&c=Brazil}{Programa DHS - Brasil.}}, porém, em 1991, foi realizada uma pesquisa de Demografia e Saúde da Mulher e da Criança com abrangência somente para o Nordeste\footnote{\href{https://dhsprogram.com/publications/publication-FR5-DHS-Final-Reports.cfm}{Relatório Final - Pesquisa sobre Saúde Familiar no Nordeste Brasil 1991}}. Em 2006, foi realizada a Pesquisa Nacional de Demografia e Saúde da Criança e da Mulher (PNDS) nos moldes da 5ª fase do projeto DHS e está previsto para 2025 o resultado da PNDS de 2023, baseado na 8ª rodada do programa. A PNDS 2023 será a primeira a fornecer histórico de filhos biológicos nascidos vivos, para homens entrevistados de 15 a 59 anos, informação que poderá ser utilizada para cálculo da fecundidade masculina. As edições de 1991 (com abrangência para o Nordeste) e de 1996 tiveram questionários aplicados ao 'marido' e ao homem selecionado.  
+
+\citeonline{wong2020LatinA} estimam as TEFMs e a TFTM utilizando métodos indiretos a partir de microdados disponíveis na plataforma do \textit{“Integrated Public Use Microdata Series (IPUMS), International”}, dos censos do Brasil, Argentina, Chile, Colômbia, Equador, México, Paraguai, Uruguai e Venezuela desde 1970. O método utiliza informações sobre a composição familiar e assume que o cônjuge ou companheiro da mulher que teve um filho nascido vivo nos 12 meses anteriores ao censo é o pai da criança. A partir do quesito que pergunta às mulheres sobre nascidos vivos nos últimos 12 meses ou pela idade do filho mais novo, calcula-se a fecundidade de período para os homens. Para estimar as idades dos pais ausentes (mulher solteira), os autores utilizaram a imputação condicional à idade da mãe, na qual a idade do pai-cônjuge ausente é a média de idade dos pai-cônjuges observados $b$ das mulheres em idade $a$, em cada país e ano \cite{wong2020LatinA}. 
+
+\begin{equation}
+    \hat{b} = E[b|A=a]
+\end{equation}
+
+As TEFMs foram obtidas pela divisão do número de nascimentos, pelo número de homens, no grupo etário. Os autores, buscaram corrigir possíveis fontes de erro (erro no registro do período de referência, subestimação do número de crianças na casa) a partir de um fator de correção, comparando a TFT feminina calculada pelo método indireto do artigo com a estimada pelo \textit{UN World Prospects\footnote{\href{https://population.un.org/wpp2019/}{World Population Prospects 2019.}}} (mantendo o padrão etário da população de cada país no momento do censo).     
+
+Houve alguns autores que tentaram contornar o problema da qualidade dos registros administrativos e estimar a fecundidade masculina em países onde havia uma proporção considerável de dados faltantes. No Brasil, \apudonline{Wong1986}{wong2022fecundidade} usaram dados administrativos para calcular a fecundidade
+masculina em São Paulo(SP) em 1983. Reportaram que, à época, cerca de 10\% dos registros de nascimento estavam com a idade do pai como “ignorada”. Infelizmente não consegui acesso ao artigo original das autoras para verificar se foram utilizadas técnicas de imputação. 
+
+\citeonline{falcao_fecundidade_2013} utilizou microdados do Sistema de Informação sobre Nascidos Vivos (SINASC) e informações do Sistema Estadual de Análise de Dados - SEADE (para o denominador, distribuição da população por sexo e idade) para estimar a TFTM e as TEFMs para alguns municípios de SP. O critério de seleção dos municípios no artigo foi aqueles que possuíam um registro superior a 1.500 nascimentos no ano, e aqueles nos quais os registros com idade do pai não declarada fossem inferior a 8,0\%. Apenas 14 municípios paulistas do ano selecionado (2013) cumpriram os dois critérios. O autor limita, em sua análise, o período reprodutivo masculino de 15 aos 59 anos, após observar que os registros com pais acima de 60 anos não eram suficientemente robustos para alterar a TFTM. Em sua análise, \citeonline{falcao_fecundidade_2013} utiliza apenas os registros que possuem idade do pai observada, deletando os registros com idade do pai ausente.    
+
+\citeonline{dudel2019estimating} utilizam registros administrativos da
+Suécia (1968-2014), EUA (1969-2015), Espanha (1975-2014) e Estônia (1989-2013), onde a idade do pai é faltante em cerca de 1\%, para a maioria dos anos na Suécia, mas chegou a 17\% no início da década de 1990 nos EUA. Os autores problematizam a abordagem utilizada por alguns autores para lidar com o problema dos dados faltantes para a idade do pai, adotada também pelo “United Nations Demographic Yearbook”\cite{unstatsu2022Nota}. Normalmente os nascimentos de pais de idade desconhecida são distribuídos proporcionalmente pelas faixas etárias, de acordo com a distribuição dos nascimentos por idade do pai antes do cálculo das taxas. Dessa forma, é pressuposto que a idade do pai é ausente por motivos totalmente aleatórios e que a distribuição das idades não registradas é a mesma das observadas. \citeonline{dudel2019estimating} discordam dessa abordagem e comprovam, através da simulação de 71.550 cenários, que a imputação das idades paternas faltantes condicionada pela idade da mãe observada tem um melhor desempenho na grande maioria das simulações.  
+
+Em seu trabalho, \citeonline{dudel2019estimating} distribuem as idades do pai não observadas de duas maneiras, condicional e não condicional à idade da mãe (assumida como sempre observada), e testam, ao final, qual das duas abordagens apresenta melhor desempenho, estimando as TEFMs para os países em determinado ano. Onde $B(x,t)$ denota os nascimentos de homens em idade $x$ no tempo $t$, $N(x,t)$ referencia a população exposta de homens em idade $x$. A TEFM calculada, como anteriormente, pelos nascimentos sobre a população exposta é dado por: $f(x,t)=B(x,t)/N(x,t)$, retirando-se o índice $t$ para simplificar as fórmulas. $B(\ast)$ representa o número de nascimentos com idade do pai desconhecida e $B^*(x)$ os nascimentos com idade do pai observada. 
+
+
+Na abordagem incondicional, $B(\ast)$ (idades não observadas) são distribuídas conforme as idades observadas $B^*(x)$ e $P^*(x)$ é a proporção de pais em idade $x$ calculada ignorando valores ausentes. O cálculo da TEFM é expresso da seguinte forma: 
+
+\begin{equation}
+    f(x)=\frac{B^*(x)+B(\ast)P^*(x)}{N(x)}
+\end{equation}
+
+Para a abordagem condicional, considera-se $B^*(x,y)$ o número de nascimentos de pais em idade $x$ e mães em idade $y$. $P^*(x|y)$ é a distribuição da idade paterna condicional à idade da mãe, a partir dos valores observados para idade do pai, calculados: $B^*(x,y)/ \sum_{i=\alpha}^{\beta}B^*(i,y)$, onde $\alpha$ e $\beta$ representam a primeira e a última idade reprodutiva dos homens; $B(\ast,y)$ representa o número de nascimentos para os quais a idade materna é conhecida e igual a $y$ e a idade paterna é desconhecida. Assim, pela abordagem condicional, a TEFM é calculada (onde $\gamma$ e $\delta$ denotam as idades mais nova e mais velha das mulheres): 
+
+\begin{equation}
+    f(x)=\frac{B^*(x)+\sum_{j= \gamma}^{\delta}  B(\ast, j)P^*(x|j)}{N(x)}
+\end{equation}
+
+
+
+
+
+\begin{comment}
+
+(fazer uma tabela mostrando os métodos já propostos e as bases utilizadas, seus pós e contra --\textit{shoumaker})
+
+
+problema do método de estimar pelos filhos que coabitam residencia com os pais: 
+mudanças no padrão de casamento, multiparentalidade--- >
+
+https://journals.library.ualberta.ca/csp/index.php/csp/article/view/15837/12642
+.....
+
+FECHAR FALANDO SOBRE O PORQUE ESCOLHER A METODOLOGIA QUE ESCOLHI PARA TRATAR O DADO... 
+
+\end{comment}
+
+
+
+

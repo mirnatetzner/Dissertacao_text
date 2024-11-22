@@ -1,0 +1,209 @@
+
+
+\section{Dados faltantes \textit{(missing data)}}
+
+Ao utilizar base de dados públicas e oficiais, provenientes de pesquisas domiciliares, como as realizadas pelos institutos nacionais de estatística, é habitual encontrar bases completas, com todos os dados preenchidos e com coluna de peso para ponderação, quando necessária. Porém, muitas vezes quando lidamos como registros administrativos ou bases de pesquisa realizada para algum projeto particular precisamos lidar, muitas vezes, com o processo de crítica e imputação de dados. O que nada mais é do que o processo de lidar com erros de mensuração ou fenômenos que por ventura prejudiquem a confiabilidade dos resultados. Deve-se perguntar se os valores observados da característica de interesse dos elementos da população contêm valores não realísticos, fruto de erros de digitações ou observações e de que forma os dados não observados podem afetar a estimativa dos fenômenos que se deseja observar.  
+
+Lidar com dados faltantes é problema comum nas pesquisas de saúde e nas bases de registros administrativos. Alguns exemplos clássicos são: o atrito em estudos longitudinais (\textit{i.e.} quando os participantes abandonam o estudo antes do término do experimento), quando algumas unidades em uma pesquisa se recusam a responder o questionário completo ou a alguma questão específica, ou ainda quando algum item num registo administrativo deixa de ser preenchido. 
+
+Cada processo de não resposta será criado por um mecanismo, que irá gerar no banco de dados diferentes padrões de dados faltantes. Uma ferramenta comumente utilizada para ilustrar esses padrões e mecanismos é a Matriz Indicadora de Dados Faltantes (MIDF). \citeonline{Little2002-cv} definem da seguinte forma: é suposto inicialmente um dataset retangular sem valores faltantes $(n \ X\ K )$, onde $Y = (y_{ij})$, com a i-ésima linha $y_{i} = (y_{i1},...,y_{iK})$ onde $y_{ij}$ é o valor da variável $Y_{j}$ para a unidade $i$. Com a ocorrência de valores faltantes a MIDF $M=m_{ij}$, onde $m_{ij}=1$ se $y_{ij}$ é faltante e $m_{ij}=0$ se $y_{ij}$ for observado. Enquanto o padrão do dado faltante descreve quais valores são, ou não, observados da MIDF (\ref{fig:padrao_missing}), os mecanismos dizem respeito a relação entre os dados ausentes e os demais valores na matriz. 
+
+Os padrões mais comuns, ilustrados por \citeonline{Little2002-cv} estão presentes na figura \ref{fig:padrao_missing}. O padrão (\textit{a}) representa o caso de quando a ausência de dados se restringe a uma única variável, por exemplo, quando num experimento planejado, em que são analisados um conjunto de fatores sobre uma variável de interesse, é pressuposto que todas sejam totalmente observadas, porém, ocorre de uma variável não estar presente (pensando em ensaios agrícolas ou químicos). O padrão visto em (\textit{b}) ocorre quando um grupo de variáveis possuem valores faltantes para os mesmos itens. Esse é um padrão comum em pesquisas domiciliares, onde as variáveis relacionadas, por exemplo, a localização da casa ou quadro de moradores podem estar plenamente preenchidos, porém, ocorre a recusa do morador ou falta de coleta do morador selecionado (i.e. em pesquisas em que ocorrem três estágios de seleção). Já o padrão em (\textit{c}) é comum em estudos longitudinais aonde parte dos participantes abandonam o experimento antes do final. Em (\textit{d}) ocorre quando o padrão para a ausência de informação é espalhado por toda a matriz de dados. Enquanto a combinação em (\textit{e}) ilustra casos em que variáveis não são observadas ao mesmo tempo, representado pelo exemplo de uma junção de arquivos em que a variável $Y1$ é comum ao arquivo de $Y2$ e $Y3$.
+
+Apesar de indicarem os melhores métodos, conhecer apenas o padrão da MIDF não é suficiente.  É necessário que o pesquisador compreenda o processo de levantamento do dado, se aproprie da literatura sobre o fenômeno que esta sendo mensurado, para poder elaborar sobre o tipo de processo que levou a perda daquela informação \cite{donders2006gentle}. Captar os aspectos relacionados a ausência do dado é crucial para definir as razões para o não preenchimento, ou seja, classificar o mecanismo associado à ausência do dado. Complementarmente, assumir mecanismos ou padrões inadequados pode levar a escolha de metodologias inadequadas para lidar com o dado faltante e a estimadores viesados, levando a conclusões errôneas \cite{ayilara2019impact}.      
+
+\begin{figure}
+    \centering
+    \caption{Exemplos de padrões de dados faltantes}
+    \includegraphics[scale=0.80]{imagens/padrões-missing.PNG}
+    \fonte{\citeonline{Little2002-cv}}
+    \label{fig:padrao_missing}
+\end{figure}
+
+A partir da matriz de dados completos $Y = (y_{ij})$ e da MIDF $M = (M_{ij})$, \citeonline{Little2002-cv} definem que os mecanismos de dados faltantes são caracterizados pela distribuição condicional de $M$ dado $Y$, ou seja, $f(M|Y,\phi)$, onde $\phi$ simboliza o parâmetro desconhecido. Assim, a partir do exposto, \cite{Little2002-cv} constroem a tipologia que considera três mecanismos para dados faltantes, são eles: 
+
+\begin{itemize}
+    \item DADO FALTANTE COMPLETAMENTE ALEATÓRIO - \textit{MCAR (Missing Completely at Random)}
+\end{itemize}
+  
+Se a ausência do dado não depende dos valores completos $Y$, faltantes ou observados, categoriza-se o mecanismo do dado faltante como completamente aleatório, isto é, onde o modo para o qual os dados não são preenchidos, é totalmente aleatório, não relacionado a nenhum valor. Ou seja, a probabilidade do dado faltante condicionado pelos valores completos $Y$ e pelo parâmetro $\phi$ é igual para todos os valores de $Y$ e parâmetros $\phi$.
+
+\begin{equation} \label{relacao_data}
+f(M|Y, \phi)= f(M|Y, \phi) \quad   \forall \quad  Y, \phi. 
+\end{equation}
+    
+Como explicita \citeonline{donders2006gentle}, quando o mecanismo MCAR ocorre, as observações para as quais existem valores faltantes compõe uma amostra aleatória do dado completo, ou seja, os valores observados são representativos para a população. Teoricamente, se MCAR, apesar dos valores faltantes, as idades dos pais observadas seriam suficientes para estimar a TFT brasileira. Um exemplo trazido pelo autor é de quando um tubo de ensaio com uma amostra de sangue ou um questionário de um entrevistado é perdido acidentalmente. A falta do dado não está relacionado a nenhuma característica do paciente do qual o sangue foi retirado ou à pessoa entrevistada, i.e., a probabilidade de a observação não ter sido realizada é totalmente ao acaso. Nesse comportamento, os dados observados também compõe uma amostra não viesada para os dados completos. 
+
+Já \citeonline{Newman2014-gs} em seu trabalho define o mecanismo MCAR quando: a probabilidade de que um valor seja faltante não depende dos valores dos dados observados nem dos valores faltantes em si, $[p(dado faltante|dados completos) = p(dado faltante)]$. Não há relação entre o mecanismo da ausência de dados e as variáveis em análise. Segundo \citeonline{nunes2007metodos}, esse mecanismo impõe que a probabilidade de não-resposta seja a mesma para diversas situações, não se altera independentemente da proporção de dados faltantes.
+
+\begin{itemize}
+    \item DADO FALTANTE ALEATÓRIO - \textit{MAR (Missing at Random)}
+\end{itemize}
+
+
+Por outro lado, quando os valores faltantes dependem somente de componentes observados, o mecanismo presente é denominado dado faltante aleatório. Segundo \citeonline{Little2002-cv}, assume-se ${Y_{obs}}$ como as características observadas ou entradas de $Y$, e ${Y_{mis}}$ como os valores faltantes. Atribui-se que a probabilidade do valor ser faltante depende somente de valores observados, ${Y_{obs}}$ de $Y$, e não dos valores ausentes. Logo, \citeonline{Little2002-cv} formalizam:
+
+\begin{equation} \label{mar_equ}
+f(M|Y, \phi)= f(M|{Y_{obs}}, \phi) \quad   \forall \quad Y_{mis},\phi. 
+\end{equation}
+
+Considera-se o mecanismo MAR se a distribuição condicional de $M$ dado $Y$ é igual à distribuição de $M$ dado ${Y_{obs}}$ para todo ${Y_{miss}}$ para estimar o parâmetro $\phi$ \cite{rubin1976inference}. Ou seja, os valores completos para $Y$ são associados a uma ou mais características observadas ${Y_{obs}}$. Isso significa que a probabilidade de um valor não ser observado está associado a dados presentes no conjunto de dados. Trazendo para o nosso problema, \citeonline{dudel2019estimating} demonstra, por meio de imputações, simulando dados considerando dois mecanismos distintos para a ausência de dados (MCAR e MAR), que definir o mecanismo MAR para a idade do pai é mais preciso do que considerar que o dado é faltante por mecanismo completamente aleatório. Foram obtidos melhores resultados para as estimativas considerando a probabilidade de ausência da informação para a idade do pai condicional a idade da mãe. Ou seja, há probabilidade de não observar a idade do pai não é igualmente distribuída entre mães de todas as idades, mães mais jovens tem maior probabilidade de a idade do pai não ser observada \cite{dudel2019estimating}.        
+
+
+
+\begin{comment}
+
+\citeonline{zhang2021tutorial}:
+-- ignorability.
+Ignorable data are the types of missing data that can be effectively handled by modern missing data techniques such as FIML, MI and TS. Missing data needs to satisfy two conditions to become ignorable missing data: 1) the missing data are either MCAR or MAR; 2) parameters associated with the specific missing data rule are distinct from the parameters associated with the distribution of the variables in the dataset (Rubin, 1976). The second condition means that the parameters associated with the distribution of M are distinct from the parameters associated with the distribution of Y . 
+
+
+
+
+\citeonline{donders2006gentle}:
+Mostly, missing data are neither MCAR nor MNAR.
+Instead, the probability that an observation is missing commonly depends on information for that subject that is present, i.e., reason for missingness is based on other observed
+patient characteristics. This type of missing data is confusingly called missing at random (MAR), because missing data can indeed be considered random conditional on these
+other patient characteristics that determined their missingness and that are available at the time of analysis.
+For example, suppose we want to evaluate the predictive value
+of a particular diagnostic test, and the test results are known
+for all diseased subjects but unknown for a random sample
+of nondiseased subjects. In this case the missing data would
+be MAR: conditional on a patient characteristic that is ob-
+served (here the presence or absence of the disease) missing
+data are random.
+Of course, it need not be that missingness
+only depends on the outcome variable. But it is the simplest
+situation, with one dependent or outcome variable and only
+one independent or predictor variable.
+ainda por \citeonline{donders2006gentle}:
+Generally, when missing data are MAR,
+all simple techniques for handling missing data, i.e., com-
+plete and available case analyses, the indicator method
+and overall mean imputation, give biased results.
+However,
+more sophisticated techniques like single and multiple imputations give unbiased results when missing data are
+MAR.
+
+\end{comment}
+
+
+
+\begin{itemize}
+    \item DADO FALTANTE NÃO ALEATÓRIO - \textit{MNAR (Missing Not at Random)}
+\end{itemize}
+
+O mecanismo não aleatório de geração de dados faltantes ocorre quando a probabilidade do dado não ser observado está relacionado ao dado faltante em si. Um exemplo clássico é para a variável renda, onde a uma tendência de subestimação devido à resistência de pessoas com rendas mais altas de revelarem a informação. Pensando na variável de interesse, idade do pai, seria o caso, hipoteticamente, se as idades dos pais não observadas ocorressem frequentemente a partir de determinada idade, se pais mais velhos tivessem vergonha de fazer o registro na DNV, por exemplo. 
+
+
+
+
+
+Segundo \citeonline{enders2022applied}, na prática, os mecanismos para dados faltantes funcionam como pressupostos estatísticos para análise de dados faltantes, indicando as ferramentas mais adequadas para cada caso.
+
+
+
+
+\textcolor{red}{[em construção]}
+
+
+
+\begin{comment}
+
+
+
+%\section{Métodos de imputação para dados faltantes}
+%\section{Simulação}
+%https://sci-hub.se/10.1007/s13524-011-0073-9
+
+
+algoritmos de imputação  determinístico - não determinístico 
+
+Além disso, existem algoritmos determinísticos e não-determinísticos. Os algoritmos não determinísticos podem encontrar diferentes soluções a cada execução, enquanto os
+determinísticos sempre encontram a mesma solução (DE FRANÇA et al., 2006).
+
+aleatorização -→ não deterministico... 
+
+paramétrico
+
+Quando é pressuposta determinada distribuição dos dados...
+
+Modelos de imputação podem ser paramétricos ou não paramétricos...
+se não paramétricos, podem ser frequentistas?
+
+ coeficiente de correlação de Pearson é fortemente dependente da distribuição normal das variáveis, enquanto o coeficiente de correlação de Spearman é não paramétrico(Arciniegas-Alarcón e Dias, 2009).
+
+conselhos: DOI: 10.1007/978-3-319-43742-2\13
+– Always evaluate the reasons for missingness: is it MCAR/MAR/MNAR?
+– What is the proportion of missing data per variable and per record?
+– Multiple imputation approaches generally perform better than other methods.
+– Evaluation tools must be used to tailor the imputation methods to a particular
+dataset.
+
+
+
+
+In order to choose the best methodological approach, several aspects must be considered. The missing mechanism is one. Another is whether to choose a parametric or a non-parametric method. The latter consideration is the same as for other statistical analyses: is it plausible that the data follow a known probability distribution, such as the normal distribution, or not.
+
+Proportion of Missing Data and Possible Reasons
+for Missingness
+
+Besides the missing data mechanism, it is also important to consider the sample distribution in each variable, as some imputation methods assume specific data distributions, usually the normal distribution.
+DOI: 10.1007/978-3-319-43742-2\_13
+
+
+Abordagem paramétrica ou não paramétrica?
+
+
+[porque idade do pai é faltante com mecanismo MAR?-esperada]
+
+[Quais variáveis estão associadas a variável de interesse?]
+
+[qual modelo de imputação é o mais adequado para a característica do conjunto de dados?]
+
+
+\textbf{What should you preregister?}
+\begin{itemize}
+    \item Theory about why your data are missing at random/completely at random/not at random
+    \item The method you plan to use to identify missingness (see Step 2)
+    \item The auxiliary variables you will test
+    \item The effect size or decision rule you plan to apply to determine whether a
+    variable should be included as an auxiliary variable in multiple imputation
+    or FIML
+    \item The multiple imputation model you have chosen (with the predictor matrix
+    - both key predictors and auxiliary variables - where appropriate)
+    \item An explanation of how the multiple imputation model is congruent with the
+    analysis model
+\end{itemize}
+
+
+\section{Definição do modelo proposto}
+
+
+    The importance of congeniality
+■ The imputation model and the analytic model must match.
+■ As a general rule, whatever is included in the analytic model needs
+to be included in the imputation model (e.g., interaction terms;
+random intercepts, random slopes, and contextual effects in
+multilevel models)
+
+
+
+Quando É Adequado Usar Imputação (slide 2019 - Pedro Luis do Nascimento Silva e Andrea Diniz da Silva- aula 10) 
+
+• Quando os mecanismos de geração de erros são corretamente
+identificados;
+• Quando informação auxiliar com bom poder preditivo está
+disponível para todas as unidades amostradas, levando a
+imputações que são próximas dos valores verdadeiros.
+• Quando os padrões de não resposta podem ser estabelecidos
+como:
+o Missing Completely At Random (MCAR);
+o Missing At Random (MAR).
+• Pode ser difícil ou impossível imputar quando a não resposta é:
+o Not Missing At Random (NMAR).
+\end{comment}
+
+
+
+
